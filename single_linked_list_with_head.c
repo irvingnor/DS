@@ -228,5 +228,7 @@ int main()
                 printf("La opcion solicitada no existe\n");
         }//Final switch
     }//Final while
+    elimina_lista(&head);
+    free(head);
     return 0;
 }
