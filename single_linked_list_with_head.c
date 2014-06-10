@@ -124,6 +124,18 @@ void elimina_repetidos(struct node** ref_head,tipo_dato val)
     }
 }
 
+void elimina_lista(struct node** ref_head)
+{
+    struct node* tmp = (*ref_head);
+    while(tmp->next != NULL)
+    {
+        struct node* b = tmp->next;
+        tmp->next = b->next;
+        free(b);
+        (*ref_head)->value--;
+    }
+}
+
 int main()
 {
     struct node* head = malloc(sizeof(struct node));
@@ -142,6 +154,7 @@ int main()
         printf("6.-Borrar numero especifico\n");
         printf("7.-Borrar todas las ocurrencias de un numero\n");
         printf("8.-Tamanio de la lista\n");
+        printf("9.-Eliminar lista completa\n");
         scanf("%d",&opcion_menu);
         switch(opcion_menu)
         {
@@ -204,6 +217,11 @@ int main()
                 {
                     tamanio(&head);
                     system("pause");////////////////////////////////
+                    break;
+                }
+            case 9:
+                {
+                    elimina_lista(&head);
                     break;
                 }
             default:
